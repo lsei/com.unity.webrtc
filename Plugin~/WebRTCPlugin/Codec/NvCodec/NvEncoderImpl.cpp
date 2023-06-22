@@ -13,6 +13,7 @@
 #include <common_video/h264/h264_common.h>
 #include <media/base/media_constants.h>
 #include <modules/video_coding/include/video_codec_interface.h>
+#include <modules/video_coding/utility/simulcast_utility.h>
 
 #include "Codec/H264ProfileLevelId.h"
 #include "Codec/NvCodec/NvEncoderCudaWithCUarray.h"
@@ -236,8 +237,13 @@ namespace webrtc
             return ret;
         }
 
-        const int number_of_streams = 1;
-        m_configurations.resize(number_of_streams);
+        const int number_of_streams = SimulcastUtility::NumberOfSimulcastStreams(m_codec);
+        if (number_of_streams > 1 && !SimulcastUtility::ValidSimulcastParameters(m_codec, number_of_streams))
+        {
+            return WEBRTC_VIDEO_CODEC_ERR_SIMULCAST_PARAMETERS_NOT_SUPPORTED;
+        }
+        m_configurations.resize(static_cast<size_t>(number_of_streams));
+        m_encoders.resize(static_cast<size_t>(number_of_streams));
 
         const CUresult result = cuCtxSetCurrent(m_context);
         if (!ck(result))

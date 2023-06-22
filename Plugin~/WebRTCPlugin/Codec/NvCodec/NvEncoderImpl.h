@@ -103,6 +103,7 @@ namespace webrtc
         const UnityProfilerMarkerDesc* m_marker;
 
         std::vector<LayerConfig> m_configurations;
+        std::vector<NvEncoderInternal> m_encoders;
 
         static absl::optional<webrtc::H264Level> s_maxSupportedH264Level;
         static std::vector<SdpVideoFormat> s_formats;
