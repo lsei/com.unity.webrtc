@@ -243,7 +243,7 @@ namespace webrtc
             return WEBRTC_VIDEO_CODEC_ERR_SIMULCAST_PARAMETERS_NOT_SUPPORTED;
         }
         m_configurations.resize(static_cast<size_t>(number_of_streams));
-        m_encoders.resize(static_cast<size_t>(number_of_streams));
+        // m_encoders.resize(static_cast<size_t>(number_of_streams));
 
         const CUresult result = cuCtxSetCurrent(m_context);
         if (!ck(result))
