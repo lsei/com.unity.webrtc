@@ -200,12 +200,14 @@ class SimulcastSample : MonoBehaviour
     {
         List<RTCRtpEncodingParameters> parameters = new List<RTCRtpEncodingParameters>();
         RTCRtpEncodingParameters encoder = new RTCRtpEncodingParameters();
+
+        encoder = new RTCRtpEncodingParameters();
         encoder.rid = "l";
         encoder.active = true;
         encoder.maxBitrate = 150 * 1024;
         encoder.minBitrate = 100 * 1024;
         encoder.maxFramerate = 30;
-        encoder.scaleResolutionDownBy = 2;
+        encoder.scaleResolutionDownBy = 4;
         parameters.Add(encoder);
 
         encoder = new RTCRtpEncodingParameters();
@@ -214,7 +216,7 @@ class SimulcastSample : MonoBehaviour
         encoder.maxBitrate = 350 * 1024;
         encoder.minBitrate = 300 * 1024;
         encoder.maxFramerate = 30;
-        encoder.scaleResolutionDownBy = 1;
+        encoder.scaleResolutionDownBy = 2;
         parameters.Add(encoder);
 
         encoder = new RTCRtpEncodingParameters();
