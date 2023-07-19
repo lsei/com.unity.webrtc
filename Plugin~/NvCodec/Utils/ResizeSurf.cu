@@ -1,4 +1,3 @@
-    int dstHeight = dstArrayDesc.Height;
 #include "ResizeSurf.h"
 
 #include <cuda_runtime.h>

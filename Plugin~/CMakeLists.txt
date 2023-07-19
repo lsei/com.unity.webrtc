@@ -93,7 +93,6 @@ if(Windows OR Linux)
     enable_language(CUDA)
   endif()
   add_subdirectory(NvCodec)
-  enable_language(CUDA)
 endif()
 
 add_subdirectory(WebRTCPlugin)
